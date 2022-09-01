@@ -10,63 +10,21 @@
 <body>
     <div class="container">
         <div class="row">
+            <a href="register/" class="btn btn-success"> Registrarse</a>
+            <a href="login/" class="btn btn-primary"> Loguearse</a>
             <div class="col-6">
-                <h2>Register</h2>
-                {% with messages = get_flashed_messages(category_filter=['registro'])%}
-                    {% if messages %}
-                        <div class="alert alert-danger">
-                            {% for message in messages %}
-                                <p>{{message}}</p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endwith %}
-                <form action="/register" method="post" class="col-6 mx-auto">
-                    <div class="form-group">
-                        <label for="first_name">First Name:</label>
-                        <input type="text" name="first_name"  class="form-control" id="first_name">
-                    </div>
-                    <div class="form-group">
-                        <label for="last_name">Last Name:</label>
-                        <input type="text" name="last_name"  class="form-control" id="last-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email"  class="form-control" id="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password"  class="form-control" id="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Confirm Password:</label>
-                        <input type="password" name="confirm_password"  class="form-control" id="confirm_password">
-                    </div>
-                    <input type="submit" value="Add User" class="btn btn-success mt-2">
-                </form>
+                <h2>Hola Amigos</h2>
             </div>
             <div class="col-6">
-                <h2>Inicia Sesión</h2>
-                {% with messages = get_flashed_messages(category_filter=['login'])%}
-                    {% if messages %}
-                        <div class="alert alert-danger">
-                            {% for message in messages %}
-                                <p>{{message}}</p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endwith %}
-                <form action="/login" method="post">
-                    <div class="form-group">
-                        <label for="email2">Email:</label>
-                        <input type="text" name="email"  class="form-control" id="email2">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" name="password"  class="form-control" id="password">
-                    </div>
-                    <input type="submit" value="Inicia Sesión" class="btn btn-warning mt-2">
-                </form>
+                <h2>Hola Amigos</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusamus, numquam eum consectetur similique quibusdam. Laboriosam sit, minus quia provident nulla soluta assumenda iure, iusto delectus fugiat architecto expedita magni!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident libero, ullam nulla necessitatibus ratione tempora nesciunt quod vitae, ducimus id, omnis voluptatum dolore vero exercitationem ab eos dolorum reiciendis! Dolorem.</p>
+                </div>   
             </div>
         </div>
     </div>
