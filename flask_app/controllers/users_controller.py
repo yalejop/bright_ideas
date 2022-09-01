@@ -4,7 +4,6 @@ from flask_app import app
 
 #importando el modelo de User
 from flask_app.models.users import User
-from flask_app.models.appointments import Appointment
 
 #importando BCrypt (encriptar)
 from flask_bcrypt import Bcrypt
@@ -57,28 +56,28 @@ def login():
 
     session['user_id'] = user.id
 
-    return redirect('/appointments')    
+    return redirect('/dashboard')    
 
-@app.route('/appointments')
-def appointments():
-    if 'user_id' not in session:
-        return redirect('/')
+# @app.route('/appointments')
+# def appointments():
+#     if 'user_id' not in session:
+#         return redirect('/')
     
-    formulario = {
-        'id': session['user_id']
-    }
+#     formulario = {
+#         'id': session['user_id']
+#     }
 
-    user = User.get_by_id(formulario)
+#     user = User.get_by_id(formulario)
 
-    appointments = Appointment.get_all()
+#     appointments = Appointment.get_all()
 
-    return render_template('appointments.html', usuario = user, appointments = appointments)
+#     return render_template('appointments.html', usuario = user, appointments = appointments)
 
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect('/')
+# @app.route('/logout')
+# def logout():
+#     session.clear()
+#     return redirect('/')
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html')
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404.html')
