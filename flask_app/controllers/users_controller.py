@@ -4,6 +4,7 @@ from flask_app import app
 
 #importando el modelo de User
 from flask_app.models.users import User
+from flask_app.models.posts import Post
 
 #importando BCrypt (encriptar)
 from flask_bcrypt import Bcrypt
@@ -68,8 +69,10 @@ def dashboard():
     }
 
     user = User.get_by_id(formulario)
+    
+    posts = Post.get_all()
 
-    return render_template('dashboard.html', usuario = user)  
+    return render_template('dashboard.html', usuario = user, posts=posts)  
 
 # @app.route('/appointments')
 # def appointments():
@@ -86,10 +89,10 @@ def dashboard():
 
 #     return render_template('appointments.html', usuario = user, appointments = appointments)
 
-# @app.route('/logout')
-# def logout():
-#     session.clear()
-#     return redirect('/')
+@app.route('/logout/')
+def logout():
+    session.clear()
+    return redirect('/')
 
 # @app.errorhandler(404)
 # def page_not_found(e):
