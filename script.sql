@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS `bright_ideas`.`posts` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` TEXT NULL,
   `users_id` INT NOT NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_posts_users_idx` (`users_id` ASC) VISIBLE,
   CONSTRAINT `fk_posts_users`

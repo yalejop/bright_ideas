@@ -4,6 +4,7 @@ from flask_app import app
 
 #importando el modelo de User
 from flask_app.models.users import User
+from flask_app.models.posts import Post
 
 #importando BCrypt (encriptar)
 from flask_bcrypt import Bcrypt
@@ -22,10 +23,10 @@ def register_template():
 def login_template():
     return render_template('login.html')
 
-@app.route('/register', methods=['POST'])
+@app.route('/register/register_user/', methods=['POST'])
 def register():
     if not User.valida_usuario(request.form):
-        return redirect('/')
+        return redirect('/register/')
 
     pwd = bcrypt.generate_password_hash(request.form['password']) #me encripta el password
 
@@ -43,20 +44,35 @@ def register():
     return redirect('/dashboard')
 
 #creando ruta para /register
-@app.route('/login', methods=['POST'])
+@app.route('/login/login_user/', methods=['POST'])
 def login():
     user = User.get_by_email(request.form)
     if not user: #si user=False
         flash('E-mail no Encontrado', 'login')
-        return redirect('/')
+        return redirect('/login/')
 
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash('Password incorrecto', 'login')
-        return redirect('/')
+        return redirect('/login/')
 
     session['user_id'] = user.id
 
-    return redirect('/dashboard')    
+    return redirect('/dashboard')  
+
+@app.route('/dashboard')
+def dashboard():
+    if 'user_id' not in session:
+        return redirect('/login/')
+    
+    formulario = {
+        'id': session['user_id']
+    }
+
+    user = User.get_by_id(formulario)
+    
+    posts = Post.get_all()
+
+    return render_template('dashboard.html', usuario = user, posts=posts)  
 
 # @app.route('/appointments')
 # def appointments():
@@ -73,10 +89,10 @@ def login():
 
 #     return render_template('appointments.html', usuario = user, appointments = appointments)
 
-# @app.route('/logout')
-# def logout():
-#     session.clear()
-#     return redirect('/')
+@app.route('/logout/')
+def logout():
+    session.clear()
+    return redirect('/')
 
 # @app.errorhandler(404)
 # def page_not_found(e):
