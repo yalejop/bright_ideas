@@ -71,6 +71,8 @@ def dashboard():
     user = User.get_by_id(formulario)
     
     posts = Post.get_all()
+    
+    # alias = Post.get_name_by_id(formulario)
 
     return render_template('dashboard.html', usuario = user, posts=posts)  
 

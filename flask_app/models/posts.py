@@ -11,6 +11,8 @@ class Post:
         self.updated_at = data['updated_at']
         self.users_id = data['users_id']
         
+        self.alias = data['alias']
+        
     @staticmethod
     def validate_post(formulario):
         es_valido = True
@@ -32,11 +34,16 @@ class Post:
     
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM posts" 
+        query = "SELECT posts.*, alias FROM posts LEFT JOIN users ON users.id = posts.users_id" 
         results = connectToMySQL('bright_ideas').query_db(query) #Lista de diccionarios
         posts = []
         for post in results:
             posts.append(cls(post)) #cls(appointments) -> Instancia de appointment, Agregamos la instancia a mi lista de appointments
         return posts
-        
-        
+
+    # @classmethod
+    # def get_name_by_id(cls, formulario): #recibir formulario_receta
+    #     query = "SELECT posts.*, alias FROM posts LEFT JOIN users ON users.id = posts.users_id WHERE users.id = %(id)s" #LEFT JOIN users
+    #     result = connectToMySQL('bright_ideas').query_db(query, formulario) #recibimos una lista 
+    #     post = cls(result[0]) #Creamos una instancia de receta
+    #     return post
