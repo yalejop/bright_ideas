@@ -10,6 +10,7 @@ class Post:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.users_id = data['users_id']
+        self.post_likes = data['post_likes']
         
         self.alias = data['alias']
         
@@ -34,7 +35,7 @@ class Post:
     
     @classmethod
     def get_all(cls):
-        query = "SELECT posts.*, alias FROM posts LEFT JOIN users ON users.id = posts.users_id" 
+        query = "SELECT posts.*, alias FROM posts LEFT JOIN users ON users.id = posts.users_id ORDER BY post_likes DESC" 
         results = connectToMySQL('bright_ideas').query_db(query) #Lista de diccionarios
         posts = []
         for post in results:

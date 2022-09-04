@@ -1,6 +1,7 @@
 from flask import render_template, redirect, session, request, flash
 
 from flask_app import app
+from flask_app.models.likes import Like
 
 #importando el modelo de User
 from flask_app.models.users import User
@@ -71,6 +72,12 @@ def dashboard():
     user = User.get_by_id(formulario)
     
     posts = Post.get_all()
+    
+    formulario_post = {
+        'id' : posts[4]
+    }
+        
+    # likes = Like.count_likes(formulario_post)
     
     # alias = Post.get_name_by_id(formulario)
 
