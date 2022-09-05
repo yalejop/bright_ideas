@@ -36,15 +36,17 @@
             <h2>Mira todas las ideas</h2>
             {% for post in posts %}
                 <h3><a href="/show/{{post.users_id}}">{{post.alias}}</a> dice:</h3>
-                <p>
-                    {{post.description}}
-                </p>
+                <fieldset>
+                    <p>
+                        {{post.description}}
+                    </p>
+                </fieldset>
                 <form action="/dashboard/create/like" method="post">
                     <input type="hidden" name="users_id" value="{{usuario.id}}">
                     <input type="hidden" name="posts_id" value="{{post.id}}">
                     <button type="submit" value="1" name="likes"> Like </button>
                 </form>
-                <p><a href="#">{{post.post_likes}} personas </a>les gusta tu idea</p>
+                <p><a href="/bright_ideas/{{post.id}}">{{post.post_likes}} personas </a>les gusta tu idea</p>
             {% endfor %}
         </div>
     </div>

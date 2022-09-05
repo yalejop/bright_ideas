@@ -73,10 +73,6 @@ def dashboard():
     
     posts = Post.get_all()
     
-    formulario_post = {
-        'id' : posts[4]
-    }
-        
     # likes = Like.count_likes(formulario_post)
     
     # alias = Post.get_name_by_id(formulario)
