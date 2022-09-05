@@ -42,9 +42,9 @@ class Post:
             posts.append(cls(post)) #cls(appointments) -> Instancia de appointment, Agregamos la instancia a mi lista de appointments
         return posts
 
-    # @classmethod
-    # def get_name_by_id(cls, formulario): #recibir formulario_receta
-    #     query = "SELECT posts.*, alias FROM posts LEFT JOIN users ON users.id = posts.users_id WHERE users.id = %(id)s" #LEFT JOIN users
-    #     result = connectToMySQL('bright_ideas').query_db(query, formulario) #recibimos una lista 
-    #     post = cls(result[0]) #Creamos una instancia de receta
-    #     return post
+    @classmethod
+    def get_post_by_id(cls, formulario): 
+        query = "SELECT posts.*, alias FROM posts LEFT JOIN users ON users.id = posts.users_id WHERE posts.id = %(id)s" 
+        result = connectToMySQL('bright_ideas').query_db(query, formulario) #recibimos una lista 
+        post = cls(result[0]) #Creamos una instancia de receta
+        return post
