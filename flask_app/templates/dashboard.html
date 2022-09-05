@@ -35,7 +35,7 @@
         <div class="row">
             <h2>Mira todas las ideas</h2>
             {% for post in posts %}
-                <h3><a href="/show/{{post.users_id}}">{{post.alias}}</a> dice:</h3>
+                <h3><a href="/users/{{post.users_id}}">{{post.alias}}</a> dice:</h3>
                 <fieldset>
                     <p>
                         {{post.description}}

@@ -33,5 +33,6 @@ class Like:
         # for like in result:
         #     likes.append(cls(like))
         # return likes
+        print(result)
         return result
     

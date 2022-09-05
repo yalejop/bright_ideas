@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <header class="d-flex align-items-center">
+        <a href="/logout/" class="btn btn-danger">Cerrar Sesión</a>
+        <a href="/dashboard" class="btn btn-danger">Bright Ideas</a>
+    </header>
+    <div class="container">
+        <h1>Información del Usuario</h1>
+        <div class="card">
+            <h3>Nombre: {{usuario.full_name}}</h3>
+            <h3>Alias: {{usuario.alias}}</h3>
+            <h3>Correo: {{usuario.email}}</h3>
+        </div>
+        <br>
+        <div class="card">
+            {% for post in posts %}
+                <p>Total de Posts in bright Ideas: <span>{{post.posts_publicados}}</span></p>
+                <p>Total de Likes in bright Ideas: {{post.post_likes}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
