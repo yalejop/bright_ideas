@@ -48,3 +48,11 @@ class Post:
         result = connectToMySQL('bright_ideas').query_db(query, formulario) #recibimos una lista 
         post = cls(result[0]) #Creamos una instancia de receta
         return post
+    
+    @classmethod
+    def get_posts_and_likes_by_user(cls, formulario):
+        query = "SELECT COUNT(users_id) as posts_publicados, post_likes FROM posts WHERE users_id = %(id)s"
+        result = connectToMySQL('bright_ideas').query_db( query, formulario)
+        print(result)
+        return result
+    

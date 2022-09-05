@@ -42,7 +42,7 @@ def register():
 
     session['user_id'] = id #guardando el id de mi usuario
 
-    return redirect('/dashboard')
+    return redirect('/login')
 
 #creando ruta para /register
 @app.route('/login/login_user/', methods=['POST'])
@@ -79,20 +79,21 @@ def dashboard():
 
     return render_template('dashboard.html', usuario = user, posts=posts)  
 
-# @app.route('/appointments')
-# def appointments():
-#     if 'user_id' not in session:
-#         return redirect('/')
+@app.route('/users/<int:id>')
+def show_user(id):
+    if 'user_id' not in session:
+        return redirect('/')
     
-#     formulario = {
-#         'id': session['user_id']
-#     }
+    formulario = { "id": id }
+    
+    user = User.get_by_id(formulario)
+    
+    formulario_posts = { "id": id }
+    
+    posts = Post.get_posts_and_likes_by_user(formulario_posts)
 
-#     user = User.get_by_id(formulario)
 
-#     appointments = Appointment.get_all()
-
-#     return render_template('appointments.html', usuario = user, appointments = appointments)
+    return render_template('show_user.html', usuario = user, posts= posts)
 
 @app.route('/logout/')
 def logout():
