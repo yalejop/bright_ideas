@@ -56,3 +56,19 @@ class Post:
         print(result)
         return result
     
+    @classmethod
+    def update(cls, formulario):   
+        query = "UPDATE posts SET description = %(description)s WHERE id = %(id)s"
+        result = connectToMySQL('bright_ideas').query_db(query, formulario)
+        return result
+    
+    @classmethod
+    def delete(cls, formulario):
+        query = "DELETE FROM likes WHERE posts_id = %(id)s;"
+        result1 = connectToMySQL('bright_ideas').query_db( query, formulario)
+        
+        query = "DELETE FROM posts WHERE posts.id = %(id)s"
+        result = connectToMySQL('bright_ideas').query_db(query, formulario)
+        print(result)
+        return result
+    
