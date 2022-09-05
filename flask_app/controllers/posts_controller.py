@@ -38,3 +38,14 @@ def show_post(id):
     likes = Like.get_users_who_liked(formulario_likes)
     
     return render_template('show_post.html', user=user, post=post, likes=likes)
+
+@app.route('/delete/posts/<int:id>')
+def delete_posts(id):
+    if 'user_id' not in session: #Solo puede ver la página si ya inició sesión 
+        return redirect('/')
+    
+    formulario = {"id": id}
+    
+    Post.delete(formulario)
+
+    return redirect('/dashboard')
