@@ -5,28 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro e Inicio de Sesion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css')}}">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <a href="register/" class="btn btn-success"> Registrarse</a>
-            <a href="login/" class="btn btn-primary"> Loguearse</a>
-            <div class="col-6">
-                <h2>Hola Amigos</h2>
+    <div class="landing-page">
+        <div class="container">
+            <div class="header-area">
+                <div class="logo">Brigth <b>Ideas</b></div>
+                <ul class="links">
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Work</li>
+                    <li>Info</li>
+                    <li><a href="login/">Login</a></li>
+                </ul>
             </div>
-            <div class="col-6">
-                <h2>Hola Amigos</h2>
+            <div class="info">
+            <h1>Looking For Inspiration</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus odit nihil ullam nesciunt quidem iste, Repellendus odit nihil</p>
+            <button><a href="register/">Register</a></button>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusamus, numquam eum consectetur similique quibusdam. Laboriosam sit, minus quia provident nulla soluta assumenda iure, iusto delectus fugiat architecto expedita magni!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident libero, ullam nulla necessitatibus ratione tempora nesciunt quod vitae, ducimus id, omnis voluptatum dolore vero exercitationem ab eos dolorum reiciendis! Dolorem.</p>
-                </div>   
+            <div class="image">
+                <img src="https://i.postimg.cc/65QxYYzh/001234.png">
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
+    <!-- Site footer -->
+    
 </body>
 </html>
